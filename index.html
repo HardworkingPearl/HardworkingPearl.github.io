@@ -8,73 +8,69 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-        --bg: #fdfdfd;        /* clean page background */
-        --surface: #f7f9fb;   /* section background */
-        --muted: #6b7280;     /* muted gray text */
-        --text: #1e293b;      /* main text */
-        --accent: #3b82f6;    /* primary blue */
-        --accent-2: #10b981;  /* secondary green */
-        --card: #ffffff;      /* card background */
-        --chip: #f1f5f9;      /* chip/tag background */
-        --border: #e2e8f0;    /* light border */
+    :root{
+      --bg:#fafafa; --surface:#ffffff; --muted:#6b7280; --text:#1f2937;
+      --accent:#2563eb; --accent-2:#0ea5e9; --card:#ffffff; --chip:#f1f5f9; --border:#e5e7eb;
     }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
-    body {
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      background: linear-gradient(180deg, var(--bg), #93daf4 60%);
-      color: var(--text);
-      line-height: 1.6;
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background: linear-gradient(180deg, var(--bg), #eaf4ff 60%);
+      color:var(--text); line-height:1.6;
     }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
 
-    .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
-
-    header.hero {
-      display: grid; grid-template-columns: 160px 1fr; grid-gap: 24px; align-items: center;
-      background: radial-gradient(600px 300px at 10% -10%, rgba(96,165,250,.15), transparent),
-                  radial-gradient(600px 300px at 90% -10%, rgba(52,211,153,.12), transparent);
-      padding: 32px; border-radius: 20px; border: 1px solid var(--border);
+    header.hero{
+      display:grid;grid-template-columns:160px 1fr;grid-gap:24px;align-items:center;
+      background:linear-gradient(90deg, rgba(37,99,235,.08), rgba(14,165,233,.08));
+      padding:32px;border-radius:20px;border:1px solid var(--border)
     }
-    .avatar { width: 160px; height: 160px; border-radius: 20px; object-fit: cover; border: 1px solid var(--border); }
-    .name { margin: 0 0 4px; font-size: 34px; line-height: 1.2; letter-spacing: -0.02em; }
-    .subtitle { margin: 6px 0 12px; color: var(--muted); }
-    .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
-    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; background: var(--chip); border: 1px solid var(--border); color: var(--text); font-weight: 500; }
-    .cta { display: inline-block; padding: 10px 14px; border-radius: 10px; background: var(--accent); color: #0b1220; font-weight: 700; border: none; }
+    .avatar{width:160px;height:160px;border-radius:20px;object-fit:cover;border:1px solid var(--border)}
+    .name{margin:0 0 4px;font-size:34px;line-height:1.2;letter-spacing:-.02em}
+    .subtitle{margin:6px 0 12px;color:var(--muted)}
+    .links{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:var(--chip);border:1px solid var(--border);color:var(--text);font-weight:500}
+    .cta{display:inline-block;padding:10px 14px;border-radius:10px;background:var(--accent);color:#fff;font-weight:700;border:none}
 
-    .grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; margin-top: 24px; }
-    section.card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
-    section.card h2 { margin: 0 0 10px; font-size: 22px; letter-spacing: -0.01em; }
-    p { margin: 8px 0 12px; }
+    .grid{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;margin-top:24px}
+    section.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px}
+    section.card h2{margin:0 0 10px;font-size:22px;letter-spacing:-.01em}
+    p{margin:8px 0 12px}
 
-    .bullets { margin: 8px 0 0 0; padding-left: 18px; }
-    .bullets li { margin: 6px 0; }
+    .bullets{margin:8px 0 0 0;padding-left:18px}.bullets li{margin:6px 0}
 
     /* Publications */
-    .pub-controls { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
-    .chip { padding: 6px 10px; border-radius: 999px; background: var(--chip); border: 1px solid var(--border); cursor: pointer; font-size: 13px; }
-    .chip.active { outline: 2px solid var(--accent); }
+    .pub-controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+    .chip{padding:6px 10px;border-radius:999px;background:var(--chip);border:1px solid var(--border);cursor:pointer;font-size:13px}
+    .chip.active{outline:2px solid var(--accent)}
 
-    .pub-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
-    .pub-item { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 14px; }
-    .pub-title { font-weight: 650; margin: 0 0 8px; }
-    .authors strong { font-weight: 700; }
-    .venue { color: var(--muted); font-size: 14px; }
-    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-    .tag { background: var(--chip); border: 1px solid var(--border); padding: 4px 8px; font-size: 12px; border-radius: 999px; color: #c9d3ea; }
+    .pub-list{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+    .pub-item{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px}
+    .pub-title{font-weight:650;margin:0 0 8px}
+    .authors strong{font-weight:700}
+    .venue{color:var(--muted);font-size:14px}
+    .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+    .tag{background:var(--chip);border:1px solid var(--border);padding:4px 8px;font-size:12px;border-radius:999px;color:var(--muted)}
+    .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+    .btn-link{
+      display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:10px;
+      border:1px solid var(--border);background:var(--chip);font-weight:600
+    }
+    .btn-link:hover{background:#eef2f7}
+    .btn-primary{
+      background:var(--accent);color:#fff;border-color:var(--accent)
+    }
+    .btn-ghost{opacity:.7}
+    .service ul{margin:6px 0 0 0;padding-left:18px}
+    footer{margin:28px 0 12px;color:var(--muted);text-align:center;font-size:14px}
 
-    .service ul { margin: 6px 0 0 0; padding-left: 18px; }
-
-    footer { margin: 28px 0 12px; color: var(--muted); text-align: center; font-size: 14px; }
-
-    @media (max-width: 880px) {
-      header.hero { grid-template-columns: 1fr; text-align: center; }
-      .links { justify-content: center; }
-      .grid { grid-template-columns: 1fr; }
-      .avatar { width: 180px; height: 180px; margin: 0 auto; }
+    @media (max-width:880px){
+      header.hero{grid-template-columns:1fr;text-align:center}
+      .links{justify-content:center}
+      .grid{grid-template-columns:1fr}
+      .avatar{width:180px;height:180px;margin:0 auto}
     }
   </style>
 </head>
@@ -99,16 +95,16 @@
       <section class="card" id="about">
         <h2>About</h2>
         <p>
-          I am a fourth‑year PhD candidate advised by Prof. Charles Ling (Fellow, Canadian Academy of Engineering) and Prof. Boyu Wang.
+          I am a fourth-year PhD candidate advised by Prof. Charles Ling (Fellow, Canadian Academy of Engineering) and Prof. Boyu Wang.
           My research spans efficient Transformer architectures and transfer learning under temporal distribution shifts. I’m currently open to
-          <strong>post‑doctoral</strong> and <strong>research scientist</strong> opportunities.
+          <strong>post-doctoral</strong> and <strong>research scientist</strong> opportunities.
         </p>
       </section>
 
       <section class="card" id="interests">
         <h2>Research Interests</h2>
         <ul class="bullets">
-          <li>Efficient attention and Transformer acceleration (e.g., Triton‑based kernels, top‑k attention).</li>
+          <li>Efficient attention and Transformer acceleration (e.g., Triton-based kernels, top-k attention).</li>
           <li>Transfer learning across evolving temporal domains; sequence modeling under distribution shift.</li>
           <li>Graph learning and domain adaptation.</li>
         </ul>
@@ -122,75 +118,132 @@
         <button class="chip" data-filter="transformers">Transformers</button>
         <button class="chip" data-filter="sequential data">Temporal / Sequence</button>
         <button class="chip" data-filter="graph">Graph / DA</button>
-        <button class="chip" data-filter="llm">LLMs </button>
+        <button class="chip" data-filter="llm">LLMs</button>
         <button class="chip" data-filter="bci">BCI / EEG</button>
         <button class="chip" data-filter="journal">Journals</button>
       </div>
       <ul class="pub-list" id="pub-list">
         <!-- 2025 -->
         <li class="pub-item" data-tags="transformers">
-          <div class="pub-title">ZETA: Leveraging Z‑order Curves for Efficient Top‑k Attention</div>
+          <div class="pub-title">ZETA: Leveraging Z-order Curves for Efficient Top-k Attention</div>
           <div class="authors"><strong>Qiuhao Zeng</strong>, Jerry Huang, Peng Lu, Gezheng Xu, Boxing Chen, Charles Ling, Boyu Wang</div>
           <div class="venue">International Conference on Learning Representations (ICLR), 2025.</div>
-          <div class="tags"><span class="tag">Transformers</span><span class="tag">LLMs</span></div>
+          <div class="tags"><span class="tag">Transformers</span><span class="tag">Efficient Attention</span></div>
+          <div class="actions">
+            <a class="btn-link btn-primary" href="https://arxiv.org/abs/2501.14577" target="_blank" rel="noopener">Paper</a>
+            <a class="btn-link" href="https://openreview.net/forum?id=j9VVzueEbG" target="_blank" rel="noopener">OpenReview</a>
+            <span class="btn-link btn-ghost" title="Add when available">Code: coming soon</span>
+          </div>
         </li>
+
         <li class="pub-item" data-tags="llm">
           <div class="pub-title">Calibrated Language Models and How to Find Them with Label Smoothing</div>
           <div class="authors">Jerry Huang, Peng Lu, <strong>Qiuhao Zeng</strong></div>
           <div class="venue">International Conference on Machine Learning (ICML), 2025.</div>
           <div class="tags"><span class="tag">LLMs</span><span class="tag">Calibration</span></div>
+          <div class="actions">
+            <a class="btn-link btn-primary" href="https://arxiv.org/abs/2508.00264" target="_blank" rel="noopener">Paper</a>
+            <a class="btn-link" href="https://openreview.net/forum?id=soLNj4l2EL" target="_blank" rel="noopener">OpenReview</a>
+            <span class="btn-link btn-ghost">Code: coming soon</span>
+          </div>
         </li>
+
         <li class="pub-item" data-tags="graph">
-          <div class="pub-title">On the Benefits of Attribute‑Driven Graph Domain Adaptation</div>
+          <div class="pub-title">On the Benefits of Attribute-Driven Graph Domain Adaptation</div>
           <div class="authors">Ruiyi Fang, Bingheng Li, Zhao Kang, <strong>Qiuhao Zeng</strong>, Nima Hosseini Dashtbayaz, Ruizhi Pu, Charles Ling, Boyu Wang</div>
           <div class="venue">International Conference on Learning Representations (ICLR), 2025.</div>
           <div class="tags"><span class="tag">Graph ML</span><span class="tag">Domain Adaptation</span></div>
+          <div class="actions">
+            <a class="btn-link btn-primary" href="https://arxiv.org/abs/2502.06808" target="_blank" rel="noopener">Paper</a>
+            <a class="btn-link" href="https://openreview.net/forum?id=t2TUw5nJsW" target="_blank" rel="noopener">OpenReview</a>
+            <span class="btn-link btn-ghost">Code: coming soon</span>
+          </div>
         </li>
+
         <li class="pub-item" data-tags="graph">
           <div class="pub-title">Homophily Enhanced Graph Domain Adaptation</div>
           <div class="authors">Ruiyi Fang, Bingheng Li, Jingyu Zhao, Ruizhi Pu, <strong>Qiuhao Zeng</strong>, Gezheng Xu, Charles Ling, Boyu Wang</div>
           <div class="venue">International Conference on Machine Learning (ICML), 2025.</div>
           <div class="tags"><span class="tag">Graph ML</span><span class="tag">Homophily</span></div>
+          <div class="actions">
+            <a class="btn-link btn-primary" href="https://arxiv.org/abs/2505.20089" target="_blank" rel="noopener">Paper</a>
+            <a class="btn-link" href="https://icml.cc/virtual/2025/poster/45180" target="_blank" rel="noopener">ICML Page</a>
+            <a class="btn-link" href="https://openreview.net/forum?id=TLR036ADaA" target="_blank" rel="noopener">OpenReview</a>
+            <span class="btn-link btn-ghost">Code: coming soon</span>
+          </div>
         </li>
 
         <!-- 2024 -->
         <li class="pub-item" data-tags="sequential data">
           <div class="pub-title">Towards Understanding Evolving Patterns in Sequential Data</div>
-          <div class="authors"><strong>Qiuhao Zeng</strong>, Long‑Kai Huang, Qi Chen, Charles Ling, Boyu Wang</div>
+          <div class="authors"><strong>Qiuhao Zeng</strong>, Long-Kai Huang, Qi Chen, Charles Ling, Boyu Wang</div>
           <div class="venue">Conference on Neural Information Processing Systems (NeurIPS), 2024 (Spotlight; Top 2.1%).</div>
           <div class="tags"><span class="tag">Temporal</span><span class="tag">Sequence</span></div>
+          <div class="actions">
+            <span class="btn-link btn-ghost">Paper: coming soon</span>
+            <span class="btn-link btn-ghost">Code: coming soon</span>
+          </div>
         </li>
+
         <li class="pub-item" data-tags="sequential data">
           <div class="pub-title">Latent Trajectory Learning for Limited Timestamps under Distribution Shift over Time</div>
-          <div class="authors"><strong>Qiuhao Zeng</strong>, Changjian Shui, Long‑Kai Huang, Peng Liu, Xi Chen, Charles Ling, Boyu Wang</div>
+          <div class="authors"><strong>Qiuhao Zeng</strong>, Changjian Shui, Long-Kai Huang, Peng Liu, Xi Chen, Charles Ling, Boyu Wang</div>
           <div class="venue">International Conference on Learning Representations (ICLR), 2024 (Oral; Top 1.2%).</div>
           <div class="tags"><span class="tag">Temporal</span><span class="tag">Distribution Shift</span></div>
+          <div class="actions">
+            <a class="btn-link btn-primary" href="https://proceedings.iclr.cc/paper_files/paper/2024/file/c30d6805267f90b61a30b1e6b71b7b10-Paper-Conference.pdf" target="_blank" rel="noopener">Paper</a>
+            <a class="btn-link" href="https://openreview.net/forum?id=bTMMNT7IdW" target="_blank" rel="noopener">OpenReview</a>
+            <a class="btn-link" href="https://iclr.cc/virtual/2024/oral/19746" target="_blank" rel="noopener">ICLR Oral</a>
+            <a class="btn-link" href="https://github.com/HardworkingPearl/SDE-EDG-iclr2024" target="_blank" rel="noopener">Code (PyTorch)</a>
+          </div>
         </li>
+
         <li class="pub-item" data-tags="sequential data">
           <div class="pub-title">Generalizing Across Temporal Domains with Koopman Operators</div>
           <div class="authors"><strong>Qiuhao Zeng</strong>, Wei Wang, Fan Zhou, Gezheng Xu, Ruizhi Pu, Changjian Shui, Christian Gagné, Shichun Yang, Charles Ling, Boyu Wang</div>
           <div class="venue">AAAI Conference on Artificial Intelligence (AAAI), 2024.</div>
           <div class="tags"><span class="tag">Domain Generalization</span><span class="tag">Koopman</span></div>
+          <div class="actions">
+            <a class="btn-link btn-primary" href="https://ojs.aaai.org/index.php/AAAI/article/view/29604/31020" target="_blank" rel="noopener">Paper (AAAI)</a>
+            <a class="btn-link" href="https://arxiv.org/html/2402.07834v2" target="_blank" rel="noopener">arXiv</a>
+            <span class="btn-link btn-ghost">Code: coming soon</span>
+          </div>
         </li>
 
         <!-- 2023 -->
         <li class="pub-item" data-tags="sequential data">
-          <div class="pub-title">Foresee What You Will Learn: Data Augmentation for Domain Generalization in Non‑Stationary Environments</div>
+          <div class="pub-title">Foresee What You Will Learn: Data Augmentation for Domain Generalization in Non-Stationary Environments</div>
           <div class="authors"><strong>Qiuhao Zeng</strong>, Wei Wang, Fan Zhou, Charles Ling, Boyu Wang</div>
           <div class="venue">AAAI Conference on Artificial Intelligence (AAAI), 2023.</div>
           <div class="tags"><span class="tag">Domain Generalization</span><span class="tag">Data Augmentation</span></div>
+          <div class="actions">
+            <a class="btn-link btn-primary" href="https://ojs.aaai.org/index.php/AAAI/article/view/26320/26092" target="_blank" rel="noopener">Paper (AAAI)</a>
+            <a class="btn-link" href="https://arxiv.org/abs/2301.07845" target="_blank" rel="noopener">arXiv</a>
+            <span class="btn-link btn-ghost">Code: coming soon</span>
+          </div>
         </li>
+
         <li class="pub-item" data-tags="journal">
-          <div class="pub-title">Episodic Task‑Agnostic Contrastive Training for Multi‑Task Learning</div>
+          <div class="pub-title">Episodic Task-Agnostic Contrastive Training for Multi-Task Learning</div>
           <div class="authors">Fan Zhou, Yuyi Chen, Jun Wen, <strong>Qiuhao Zeng</strong>, Changjian Shui, Charles X. Ling, Shichun Yang, Boyu Wang</div>
           <div class="venue">Neural Networks, 2023.</div>
-          <div class="tags"><span class="tag">Multi‑Task</span><span class="tag">Contrastive</span></div>
+          <div class="tags"><span class="tag">Multi-Task</span><span class="tag">Contrastive</span></div>
+          <div class="actions">
+            <a class="btn-link btn-primary" href="https://dl.acm.org/doi/10.1016/j.neunet.2023.02.023" target="_blank" rel="noopener">Paper</a>
+            <a class="btn-link" href="https://pubmed.ncbi.nlm.nih.gov/36878169/" target="_blank" rel="noopener">PubMed</a>
+            <span class="btn-link btn-ghost">Code: coming soon</span>
+          </div>
         </li>
+
         <li class="pub-item" data-tags="bci journal">
-          <div class="pub-title">LGGNet: Learning from Local‑Global‑Graph Representations for Brain‑Computer Interface</div>
+          <div class="pub-title">LGGNet: Learning from Local-Global-Graph Representations for Brain-Computer Interface</div>
           <div class="authors">Yi Ding, Neethu Robinson, Chengxuan Tong, <strong>Qiuhao Zeng</strong>, Cuntai Guan</div>
           <div class="venue">IEEE Transactions on Neural Networks and Learning Systems (TNNLS), 2023.</div>
           <div class="tags"><span class="tag">BCI</span><span class="tag">GNN</span></div>
+          <div class="actions">
+            <a class="btn-link btn-primary" href="https://arxiv.org/abs/2105.02786" target="_blank" rel="noopener">Paper (arXiv/TNNLS)</a>
+            <a class="btn-link" href="https://github.com/yi-ding-cs/LGG" target="_blank" rel="noopener">Code (PyTorch)</a>
+          </div>
         </li>
       </ul>
     </section>
@@ -222,7 +275,6 @@
   </div>
 
   <script>
-    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Publication filtering
