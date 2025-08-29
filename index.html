@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,8 +29,11 @@
       padding:32px;border-radius:20px;border:1px solid var(--border)
     }
     .avatar{width:160px;height:160px;border-radius:20px;object-fit:cover;border:1px solid var(--border)}
-    .name{margin:0 0 4px;font-size:34px;line-height:1.2;letter-spacing:-.02em}
-    .subtitle{margin:6px 0 12px;color:var(--muted)}
+    .name{margin:0 0 6px;font-size:34px;line-height:1.2;letter-spacing:-.02em}
+    .subtitle{margin:0 0 10px;color:var(--muted)}
+    .metrics{display:flex;gap:12px;flex-wrap:wrap;margin:8px 0 12px}
+    .metric{display:inline-flex;gap:8px;align-items:center;background:var(--chip);border:1px solid var(--border);border-radius:999px;padding:6px 12px;font-weight:600}
+    .metric small{font-weight:500;color:var(--muted)}
     .links{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
     .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:var(--chip);border:1px solid var(--border);color:var(--text);font-weight:500}
     .cta{display:inline-block;padding:10px 14px;border-radius:10px;background:var(--accent);color:#fff;font-weight:700;border:none}
@@ -59,9 +63,7 @@
       border:1px solid var(--border);background:var(--chip);font-weight:600
     }
     .btn-link:hover{background:#eef2f7}
-    .btn-primary{
-      background:var(--accent);color:#fff;border-color:var(--accent)
-    }
+    .btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
     .btn-ghost{opacity:.7}
     .service ul{margin:6px 0 0 0;padding-left:18px}
     footer{margin:28px 0 12px;color:var(--muted);text-align:center;font-size:14px}
@@ -81,6 +83,15 @@
       <div>
         <h1 class="name">Qiuhao Zeng</h1>
         <div class="subtitle">PhD Candidate, Machine Learning Group · University of Western Ontario</div>
+
+        <!-- REAL-TIME METRICS -->
+        <div class="metrics" id="scholar-metrics">
+          <div class="metric"><span>📈</span><span id="citations">…</span><small>citations</small></div>
+          <div class="metric"><span>🏅</span><span id="hindex">…</span><small>h-index</small></div>
+          <div class="metric"><span>📊</span><span id="i10">…</span><small>i10-index</small></div>
+          <a class="pill" href="https://scholar.google.ca/citations?user=MJdcPlgAAAAJ&hl=en" target="_blank" rel="noopener">View on Google Scholar</a>
+        </div>
+
         <div class="links">
           <a class="pill" href="mailto:qzeng53@uwo.ca">📧 qzeng53@uwo.ca</a>
           <a class="pill" href="https://www.linkedin.com/in/qiuhao-zeng-8a528184/" target="_blank" rel="noopener">LinkedIn</a>
@@ -91,31 +102,10 @@
       </div>
     </header>
 
-    <div class="grid">
-      <section class="card" id="about">
-        <h2>About</h2>
-        <p>
-          I am a fourth-year PhD candidate advised by Prof. Charles Ling (Fellow, Canadian Academy of Engineering) and Prof. Boyu Wang.
-          My research spans efficient Transformer architectures and transfer learning under temporal distribution shifts. I’m currently open to
-          <strong>post-doctoral</strong> and <strong>research scientist</strong> opportunities.
-        </p>
-      </section>
-
-      <section class="card" id="interests">
-        <h2>Research Interests</h2>
-        <ul class="bullets">
-          <li>Efficient attention and Transformer acceleration (e.g., Triton-based kernels, top-k attention).</li>
-          <li>Transfer learning across evolving temporal domains; sequence modeling under distribution shift.</li>
-          <li>Graph learning and domain adaptation.</li>
-        </ul>
-      </section>
-    </div>
-
     <section class="card" id="publications">
       <h2>Publications</h2>
       <div class="pub-controls">
         <button class="chip active" data-filter="all">All</button>
-        <!-- <button class="chip" data-filter="transformers">Transformers</button> -->
         <button class="chip" data-filter="sequential">Temporal / Sequence</button>
         <button class="chip" data-filter="graph">Graph / DA</button>
         <button class="chip" data-filter="llm">LLMs</button>
@@ -249,27 +239,6 @@
       </ul>
     </section>
 
-    <div class="grid">
-      <section class="card service" id="service">
-        <h2>Academic Service</h2>
-        <ul>
-          <li>Conference Reviewer: ICLR, NeurIPS (Top Reviewer), ICML, AISTATS.</li>
-          <li>Journal Reviewer: TNNLS, TMLR.</li>
-          <li>Teaching Assistant: CS3346 (AI), CS2210 (Data Structures), CS3357 (Networks).</li>
-        </ul>
-      </section>
-      <section class="card" id="patent">
-        <h2>Patent</h2>
-        <p><strong>Mental Arousal Level Regulation System and Method</strong>, PCT Patent no. PCT/SG2022/050243 (2022).</p>
-      </section>
-    </div>
-
-    <section class="card" id="contact">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:zengqhyy@gmail.com">zengqhyy@gmail.com</a> · <a href="mailto:qzeng53@uwo.ca">qzeng53@uwo.ca</a></p>
-      <p>Also on <a href="https://www.linkedin.com/in/qiuhao-zeng-8a528184/" target="_blank" rel="noopener">LinkedIn</a> and <a href="https://scholar.google.ca/citations?user=MJdcPlgAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
-    </section>
-
     <footer>
       © <span id="year"></span> Qiuhao Zeng · Last updated Aug 2025
     </footer>
@@ -278,18 +247,43 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Publication filtering
-    const chips = Array.from(document.querySelectorAll('.chip'));
-    const items = Array.from(document.querySelectorAll('.pub-item'));
-    chips.forEach(chip => {
-      chip.addEventListener('click', () => {
-        chips.forEach(c => c.classList.remove('active'));
+    const USE_SERPAPI = true;
+    const SERPAPI_KEY = "YOUR_SERPAPI_KEY"; 
+    const SCHOLAR_AUTHOR_ID = "MJdcPlgAAAAJ";
+
+    async function fetchViaSerpApi() {
+      const url = `https://serpapi.com/search.json?engine=google_scholar_author&author_id=${SCHOLAR_AUTHOR_ID}&api_key=${SERPAPI_KEY}`;
+      const r = await fetch(url);
+      const data = await r.json();
+      const table = data.cited_by.table;
+      return {
+        citations: table[0].citations.all,
+        hindex: table[1].h_index.all,
+        i10: table[2].i10_index.all
+      };
+    }
+
+    function setMetric(id,val){document.getElementById(id).textContent=val ?? "—";}
+
+    (async()=>{
+      try{
+        const res=await fetchViaSerpApi();
+        setMetric("citations",res.citations);
+        setMetric("hindex",res.hindex);
+        setMetric("i10",res.i10);
+      }catch(e){console.warn(e)}
+    })();
+
+    // filter UI
+    const chips=document.querySelectorAll('.chip');
+    const items=document.querySelectorAll('.pub-item');
+    chips.forEach(chip=>{
+      chip.addEventListener('click',()=>{
+        chips.forEach(c=>c.classList.remove('active'));
         chip.classList.add('active');
-        const filter = chip.dataset.filter;
-        items.forEach(li => {
-          if (filter === 'all') { li.style.display = ''; return; }
-          const tags = (li.dataset.tags || '').split(/\s+/);
-          li.style.display = tags.includes(filter) ? '' : 'none';
+        const filter=chip.dataset.filter;
+        items.forEach(li=>{
+          li.style.display=(filter==='all'||(li.dataset.tags||'').includes(filter))?'':'none';
         });
       });
     });
